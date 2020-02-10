@@ -3,7 +3,7 @@
  * Plugin Name: Notification : Yoast SEO
  * Description: Yoast SEO merge tags for post triggers
  * Author: Jean-Paul Horn
- * Version: 1.0.2
+ * Version: 1.0.3
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -12,7 +12,9 @@ defined( 'ABSPATH' ) || exit;
 
 add_action( 'notification/trigger/registered', function( $trigger ) {
 
-	if ( ! preg_match( '/wordpress\/(?!.*(plugin|theme)).*\/(updated|trashed|published|drafted|added|pending|scheduled)/', $trigger->get_slug() ) ) {
+	$pattern = '/(wordpress\/(?!.*(plugin|theme)).*\/(updated|trashed|published|drafted|added|pending|scheduled)|scheduled\/(?!.*user).*\/ntfn_st_(.*))/';
+
+	if ( ! preg_match( $pattern, $trigger->get_slug() ) ) {
 		return;
 	}
 
