@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
 
 add_action( 'notification/trigger/registered', function( $trigger ) {
 
-	$pattern = '/(wordpress\/(?!.*(plugin|theme)).*\/(updated|trashed|published|drafted|added|pending|scheduled)|scheduled\/(.*)\/ntfn_st_(.*))/';
+	$pattern = '/(wordpress\/(?!.*(plugin|theme)).*\/(updated|trashed|published|drafted|added|pending|scheduled)|scheduled\/(?!.*user).*\/ntfn_st_(.*))/';
 
 	if ( ! preg_match( $pattern, $trigger->get_slug() ) ) {
 		return;
