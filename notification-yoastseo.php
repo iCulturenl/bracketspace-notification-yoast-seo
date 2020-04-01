@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'notification/trigger/registered', function( $trigger ) {
+add_action( 'notification/trigger/merge_tags', function( $trigger ) {
 
 	$pattern = '/(post\/(.*)\/(updated|trashed|published|drafted|added|pending|scheduled)|scheduled\/(?!.*user).*\/ntfn_st_(.*))/';
 
